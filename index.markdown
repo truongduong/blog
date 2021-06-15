@@ -4,3 +4,5 @@
 
 layout: home
 ---
+
+{% include toc.md %}
