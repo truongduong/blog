@@ -5,4 +5,12 @@
 layout: home
 ---
 
-{% include toc.md %}
+<ul class="post-list">
+{% for post in site.posts %}
+  <li> <span class="post-meta">{{post.date}}</span>
+    <h3>
+          <a class="post-link" href="{{ site.baseurl }}{{ post.url }}">
+            {{ post.title }}
+          </a>
+        </h3>
+{% endfor %}
