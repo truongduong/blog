@@ -53,7 +53,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 .wrapper:after, .footer-col-wrapper:after { content: ""; display: table; clear: both; }
 
 /** Icons */
-.svg-icon { width: 16px; height: 16px; display: inline-block; fill: #828282; padding-right: 5px; vertical-align: text-top; }
+.svg-icon { width: 16px; height: 16px; display: inline-block; fill: brown; padding-right: 5px; vertical-align: text-top; }
 
 .social-media-list li + li { padding-top: 5px; }
 
@@ -114,14 +114,40 @@ table td { border: 1px solid #e8e8e8; }
 .post-list { margin-left: 0; list-style: none; }
 .post-list > li { margin-bottom: 16px; }
 
-.post-meta { font-size: 10px; color: #828282; }
+.post-meta { font-size: 12px; color: #828282; }
 
 .post-link { display: block; font-size: 18px; }
 
 /** Posts */
 .post-header { margin-bottom: 30px; }
 
-.post-title { font-size: 42px; letter-spacing: -1px; line-height: 1; }
+/* Paging */
+.newer-posts {
+  background: #C39B77 none repeat scroll 0 0;
+  color: white !important;
+  outline: medium none;
+  padding: 6px;
+  text-decoration: none;
+  float: right;
+}
+.older-posts {
+  background:#C39B77 none repeat scroll 0 0;
+  color: white !important;
+  outline: medium none;
+  padding: 6px;
+  text-decoration: none;
+  float: left;
+}
+.githubicon
+{
+  float: right;
+}
+.p-name
+{
+  color: #654321;
+}
+
+.post-title { font-size: 24px; letter-spacing: -1px; line-height: 1; font-weight: 600; color: brown }
 @media screen and (max-width: 800px) { .post-title { font-size: 36px; } }
 
 .post-content { margin-bottom: 30px; }

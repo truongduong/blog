@@ -1,0 +1,78 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: home
+---
+
+<!-- <ul class="post-list"> -->
+{% for post in paginator.posts %}
+  <span class="post-meta">{{post.date}}</span>
+    <h3>
+          <a class="post-link" href="{{ site.baseurl }}{{ post.url }}">
+            {{ post.title }}
+          </a>
+        </h3>
+{% endfor %} <br>
+
+<!-- Pagination links -->
+<!-- {% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Prev</a>
+  {% else %}
+    <span>&laquo; Prev</span>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <em>{{ page }}</em>
+    {% elsif page == 1 %}
+      <a href="{{ '/' | relative_url }}">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+  {% else %}
+    <span>Next &raquo;</span>
+  {% endif %}
+</div>
+{% endif %} -->
+
+<!-- Pagination links the second -->
+
+{% if paginator.total_pages != 1 %}  
+    <div class="row text-center text-caps">
+        <div class="col-md-8 col-md-offset-2">
+            <nav class="pagination" role="pagination">
+<!-- <span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span> -->
+{% if site.paginate_path != 'page/:num'%}
+{% if paginator.previous_page %}
+  {% if paginator.previous_page == 1 %}
+  <a class="newer-posts" href="{{ site.url }}/blog/" title="Newer Posts">Newer Posts >></a>
+  {% else %}
+ <a class="newer-posts" href="{{ site.url }}/blog/page/{{ paginator.previous_page }}/" title="Newer Posts">Newer Posts >></a>
+  {% endif %}
+{% endif %}
+{% if paginator.next_page %} 
+<a class="older-posts" href="{{ site.url }}/blog/page/{{ paginator.next_page }}/" title="Older Posts"><< Older Posts</a>
+{% endif %} 
+{% else %}
+{% if paginator.previous_page %}
+  {% if paginator.previous_page == 1 %}
+  <a class="newer-posts" href="{{ site.url }}/blog/" title="Newer Posts">Newer Posts >></a>
+  {% else %}
+ <a class="newer-posts" href="{{ site.url }}/blog/page{{ paginator.previous_page }}/" title="Newer Posts">Newer Posts >></a>
+  {% endif %}
+{% endif %}
+{% if paginator.next_page %} 
+<a class="older-posts" href="{{ site.url }}/blog/page/{{ paginator.next_page }}/" title="Older Posts"><< Older Posts </a>
+            </nav>
+        </div>
+    </div>
+{% endif %}
+{% endif %}
+{% endif %}
