@@ -39,9 +39,7 @@ paginate: 5
 
 paginate_path: "/page/:num/"
 
-# permalink: /:title
-
-
+permalink: /:title
 
 # Exclude from processing.
 # The following items will not be processed, by default.
