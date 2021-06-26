@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SQL database performance concepts
-date:   2021-06-18
+date: '2021-06-18'
 categories: Database
 ---
 
