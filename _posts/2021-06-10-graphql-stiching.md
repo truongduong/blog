@@ -1,10 +1,9 @@
 ---
+title: GraphQL Stitching
 layout: post
-title:  "GraphQL Stiching"
-date:   '2021-06-21'
+date: '2021-06-21'
 categories: Microservices
 ---
-
 
 Chocolate graphql?????
 

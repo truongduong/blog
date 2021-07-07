@@ -1,5 +1,5 @@
 ---
-title: Saga pattern
+title: Sagas pattern
 layout: post
 date: '2021-06-12'
 categories:
