@@ -69,10 +69,11 @@ Because we use RabbitMQ as message broker so we need to install it
 
 Run the command below to start a RabbitMQ container listening on the default port of 5672. Admin site is on port 15672
 
-{% highlight docker %}
+
+```docker
 docker run -d —-hostname my-rabbit —-name some-rabbit 
 -p 15672:15672 -p 5672:5672 rabbitmq:3-management
- {% endhighlight %}
+```
  
 <img src="{{ '/blog/assets/14.png'}}" />
 
@@ -81,7 +82,8 @@ docker run -d —-hostname my-rabbit —-name some-rabbit
 
 Event and its handlers
 
-{% highlight csharp%}
+
+```csharp
 public class ProductPriceChangedIntegrationEvent : IntegrationEvent
 {
 	public int ProductId { get; private set; }
@@ -110,7 +112,7 @@ public class ProductPriceChangedIntegrationEventHandler
 		await Task.Delay(1);
 	}
 }
-{%endhighlight%}
+```
 
 Register Event bus services: IRabbitMQPersistentConnection,  IEventBus, IEventbusSubscriptionManager, ProductPriceChangedIntegrationEventHandler and finally subscript to this event
 
@@ -122,11 +124,13 @@ Register Event bus services: IRabbitMQPersistentConnection,  IEventBus, IEventbu
 
 	
 We do the same steps for another API, this is to see an event can be subscribed and handled simultaneously.
+	
 
 <img src="{{ '/blog/assets/11.png'}}" />
 	
 
 **After starting two APIs, we have an Exchange, two queues created and these are binding together with the same routing key which is the event name**
+	
 
 <img src="{{ '/blog/assets/12.png'}}" />
 
@@ -134,14 +138,38 @@ We do the same steps for another API, this is to see an event can be subscribed 
 <img src="{{ '/blog/assets/13.png'}}" />
 	
 
+	**RabbitMQ Entities Model**
+	
+	
+As we can see above screenshot, exchange is bound to queues via a routing key, this is because we are creating exchange with type Direct, when creating with type Fanout, the binding does not need a routing key
+	
+```csharp	
+channel.ExchangeDeclare(exchange: BROKER_NAME, type: "direct");
+```
+
+In MassTransit, when creating exchange, the default type is Fanout and we can specify which type we want. It is depent on the usage
+	
+	
+<img src="{{ '/blog/assets/masstransit_12.png'}}" />
+	
+	
+In NServiceBus, it provide some methods to choose the routing technology
+
+	
+<img src="{{ '/blog/assets/nservicebus_14.png'}}" />
+	
+	
+Refer to this [link](https://www.rabbitmq.com/tutorials/amqp-concepts.html) for AMQP entities model, to see how the binding between exchange and queue works for different types
+
 	
 #### **Publish ProductPriceChanged event in Catalog API**
+	
 
 To see how the event is handled in subscribers, we will publish the event.
 
 Create a simple integration service for publishing event
 
-{% highlight csharp%}
+```csharp
 public interface ICatalogIntegrationEventService
 {
 	Task PublishThroughEventBusAsync(IntegrationEvent evt);
@@ -172,7 +200,7 @@ public class CatalogIntegrationEventService : ICatalogIntegrationEventService, I
 		}
 	}
 }
-{% endhighlight%}
+```
 
 Register EventBus and RabbitMQPersistentConnection and publish the event
 

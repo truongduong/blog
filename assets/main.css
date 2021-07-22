@@ -147,6 +147,35 @@ table td { border: 1px solid #e8e8e8; }
   color: #654321;
 }
 
+.UUbT9 {
+  /* position: relative; */
+  text-align: left;
+  margin-top: -1px;
+  z-index: 3;
+  cursor: default;
+  font-size: 12px;
+  background-color:rgb(250, 248, 248);
+}
+
+#results-container
+{
+    margin-left: 0;
+}
+.result-item
+{
+  line-height: 30px;
+  min-width: 740px;
+}
+
+#search-input
+{
+  border:solid 1px brown;
+  height: 30px;
+  width: 300px;
+  font-style: italic;
+  font-size: 16px;
+}
+
 .post-title { font-size: 22px; letter-spacing: -1px; line-height: 1; font-weight: 600; color: brown }
 @media screen and (max-width: 600px) { .post-title { font-size: 22px; } }
 

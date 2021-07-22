@@ -107,6 +107,11 @@ Event is consumed in Basket service
 <img src="{{ '/blog/assets/masstransit_11.png'}}" />
 	
 	
+MassTransit included both Consummer Saga and Automatonymous, a .NET library to implement state machine, we can use these to implement saga policies or workflows. 
+	
+To implement distributed transaction i.e. in microservice we can use MassTransit Courier which is includes Automaonymous and Routing Slip 
+	
+	
 **Conslusion**
 	
 MassTransit is free software/open-source .NET-based Enterprise Service Bus software while NServiceBus required a commercial licence. MassTransit supports almost features to build message-based application, It can be an anternative to NServiceBus
